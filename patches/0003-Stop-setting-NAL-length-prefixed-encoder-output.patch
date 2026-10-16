@@ -1,0 +1,29 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Alex Zorzi <alleszorzi@gmail.com>
+Date: Fri, 16 Oct 2026 18:27:16 +0200
+Subject: [PATCH] Stop setting NAL length-prefixed encoder output
+
+AOSP MPEG4Writer can't find the HEVC parameter sets in a length-prefixed
+stream, so 4K and 8K recordings lost their video track.
+
+Ported from myron's 0004; vb/e -> Ki/f.
+---
+ smali_classes5/Ki/f.smali | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/smali_classes5/Ki/f.smali b/smali_classes5/Ki/f.smali
+index 00a841e..9dd340a 100644
+--- a/smali_classes5/Ki/f.smali
++++ b/smali_classes5/Ki/f.smali
+@@ -780,7 +780,7 @@
+ 
+     iget-boolean v7, v3, LKi/r;->y:Z
+ 
+-    if-eqz v7, :cond_1c
++    goto :cond_1c
+ 
+     iget v7, v3, LKi/r;->l:I
+ 
+-- 
+2.56.0
+

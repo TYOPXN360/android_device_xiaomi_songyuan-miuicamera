@@ -28,8 +28,8 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libgui_shim_miuicamera.so'),
     'system/lib64/libmicampostproc_client.so': blob_fixup()
         .remove_needed('libhidltransport.so'),
-    # patches/ holds only 0001, re-derived for songyuan's R8 mapping. The rest of
-    # myron's set is still unported; see patches-myron-reference/ and the README.
+    # patches/ holds myron's 0001, 0002 and 0004, re-derived for songyuan's R8 mapping.
+    # See patches-myron-reference/ and the README for the rest.
     'system/priv-app/MiuiCamera/MiuiCamera.apk': blob_fixup()
         .apktool_patch('patches'),
 }  # fmt: skip
