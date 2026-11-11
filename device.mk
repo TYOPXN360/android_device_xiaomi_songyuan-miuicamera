@@ -23,8 +23,7 @@ PRODUCT_COPY_FILES += \
 # allowlists on the same partition (product/etc/permissions), so install them
 # there rather than on /system.
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/privapp-permissions-miuicamera.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-miuicamera.xml \
-    $(LOCAL_PATH)/configs/privapp-permissions-miuiscanner.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-miuiscanner.xml
+    $(LOCAL_PATH)/configs/privapp-permissions-miuicamera.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-miuicamera.xml
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
