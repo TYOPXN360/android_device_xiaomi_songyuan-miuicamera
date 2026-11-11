@@ -1,6 +1,10 @@
 # All unpinned blobs below are extracted from songyuan OS3.0.305.0.WGNEUXM
 
-product/priv-app/MiuiCamera/MiuiCamera.apk:system/priv-app/MiuiCamera/MiuiCamera.apk
+# Keep MiuiCamera on /product: its privileged permission allowlist lives on the
+# same partition, and Android 17 resolves those allowlists per partition. An
+# app on /system with an allowlist on /product fails systemReady with
+# "Signature|privileged permissions not in privileged permission allowlist".
+product/priv-app/MiuiCamera/MiuiCamera.apk
 
 # Xiaomi Scanner is dropped: it is a MIUI framework app (miui.os.Build) and
 # cannot start on this tree. The camera simply keeps QR scanning switched off.
