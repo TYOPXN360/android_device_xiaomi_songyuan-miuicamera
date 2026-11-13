@@ -44,5 +44,14 @@ PRODUCT_COPY_FILES += \
 # permissions dialog. That app does not exist here, so the dialog never shows
 # and the viewfinder stays black. This is the property equivalent of
 # patches/0001, which forces the same branch by clobbering the flag register.
-PRODUCT_PROPERTY_OVERRIDES += \
+#
+# A vendor build.prop entry does not work for this one: Android 12+ does not
+# take bare ro.product.* keys from a partition build.prop, so the value landed in
+# /vendor/build.prop line 425 and was never applied, which left the viewfinder
+# frozen while the rest of the UI worked.
+#
+# Stock keeps it in mi_ext/etc/build.prop, and mi_ext folds into system_ext here,
+# so this is the same channel. init.songyuan.rc also sets it, because the
+# property is still empty at boot if this path is ever dropped again.
+PRODUCT_SYSTEM_EXT_PROPERTIES += \
     ro.product.mod_device=songyuan_global
