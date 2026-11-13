@@ -37,3 +37,12 @@ PRODUCT_COPY_FILES += \
 # viewfinder stays black. Grant the set up front and pin it.
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/default-permissions-miuicamera.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/default-permissions/default-permissions-miuicamera.xml
+
+# The app keys its permission flow off ro.product.mod_device: when the value
+# contains "_global" it assumes a global build and asks Android for the
+# permissions itself, otherwise it launches the HyperOS Security Center
+# permissions dialog. That app does not exist here, so the dialog never shows
+# and the viewfinder stays black. This is the property equivalent of
+# patches/0001, which forces the same branch by clobbering the flag register.
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.product.mod_device=songyuan_global
