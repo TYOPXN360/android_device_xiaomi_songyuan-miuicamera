@@ -54,4 +54,4 @@ PRODUCT_COPY_FILES += \
 # so this is the same channel. init.songyuan.rc also sets it, because the
 # property is still empty at boot if this path is ever dropped again.
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
-    ro.product.mod_device=songyuan_global
+    ro.product.mod_device=songyuan
