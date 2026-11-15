@@ -1,0 +1,22 @@
+//
+// SPDX-FileCopyrightText: The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+// Lives in the camera tree because it exists only for MIUICamera: the app asks
+// com.miui.securitycenter to run its privacy declaration on first launch and
+// will not open the viewfinder until something answers with the accepted code.
+android_app {
+    name: "SecurityCenterStub",
+
+    srcs: ["src/**/*.kt"],
+
+    certificate: "platform",
+    privileged: true,
+    system_ext_specific: true,
+    platform_apis: true,
+
+    optimize: {
+        enabled: false,
+    },
+}

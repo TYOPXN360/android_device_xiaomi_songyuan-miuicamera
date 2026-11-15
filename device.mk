@@ -55,3 +55,11 @@ PRODUCT_COPY_FILES += \
 # property is still empty at boot if this path is ever dropped again.
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
     ro.product.mod_device=songyuan
+
+# Stub Security Center. MIUICamera asks com.miui.securitycenter to declare its
+# privacy permissions on first launch and treats result code 1 as accepted; with
+# no such activity the request never completes, mIsNewCTAShowing stays true and
+# setupCamera is skipped, leaving the viewfinder frozen. This is the only thing
+# that needs the stub, so it ships with the camera rather than with the device.
+PRODUCT_PACKAGES += \
+    SecurityCenterStub
