@@ -48,3 +48,9 @@ Capture needs more than this tree: 28 camera blobs under `odm/etc/camera` and
 Without `xiaomi/quickviewsnapshot.json` in particular, `libmialgoengine` gets a
 null pipeline and the camera provider segfaults in `PipelineInfo::operator=` on
 every shutter press.
+
+## Current OS4 extraction path
+
+The extracted OS4 APK is installed from `product/priv-app/MiuiCamera/MiuiCamera.apk` and is currently a raw stock blob before fixups. `extract-files.py` applies only `patches-satpip/` to this APK. The deleted historical patches targeted an earlier R8 mapping (`Td/c`, `Se/a`, `Ki/f`) and are preserved only under `patches-myron-reference/`; the active `patches/` directory is intentionally empty.
+
+The old `0001` global-device workaround is intentionally not re-applied: `ro.product.mod_device=songyuan` plus `SecurityCenterStub` already covers that permission-flow behavior. The SAT/PIP experiment is separate and only adds the Xiaomi `MiStreamUsecase` session field when the app has not supplied it.

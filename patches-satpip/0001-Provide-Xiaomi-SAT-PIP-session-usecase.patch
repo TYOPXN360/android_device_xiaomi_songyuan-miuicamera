@@ -1,0 +1,87 @@
+diff --git a/smali_classes4/n9/B0.smali b/smali_classes4/n9/B0.smali
+index d173f92..dccd040 100644
+--- a/smali_classes4/n9/B0.smali
++++ b/smali_classes4/n9/B0.smali
+@@ -13207,6 +13207,8 @@
+ 
+     invoke-static {p1, v3}, Ln9/l0;->s0(Landroid/hardware/camera2/CaptureRequest$Builder;Z)V
+ 
++    invoke-static {p1}, LEh/b;->e(Landroid/hardware/camera2/CaptureRequest$Builder;)V
++
+     :cond_3
+     iget-object v3, p0, Ln9/B0;->U:Ljava/lang/Object;
+ 
+@@ -15571,6 +15573,8 @@
+ 
+     iget-object v0, v1, Ln9/B0;->B:Landroid/hardware/camera2/CaptureRequest$Builder;
+ 
++    invoke-static {v0}, LEh/b;->e(Landroid/hardware/camera2/CaptureRequest$Builder;)V
++
+     invoke-virtual {v0}, Landroid/hardware/camera2/CaptureRequest$Builder;->build()Landroid/hardware/camera2/CaptureRequest;
+ 
+     move-result-object v14
+@@ -18118,6 +18122,8 @@
+ 
+     iget-object p2, p0, Ln9/B0;->B:Landroid/hardware/camera2/CaptureRequest$Builder;
+ 
++    invoke-static {p2}, LEh/b;->e(Landroid/hardware/camera2/CaptureRequest$Builder;)V
++
+     invoke-virtual {p2}, Landroid/hardware/camera2/CaptureRequest$Builder;->build()Landroid/hardware/camera2/CaptureRequest;
+ 
+     move-result-object p2
+@@ -23387,6 +23393,8 @@
+ 
+     iget-object p5, p0, Ln9/B0;->B:Landroid/hardware/camera2/CaptureRequest$Builder;
+ 
++    invoke-static {p5}, LEh/b;->e(Landroid/hardware/camera2/CaptureRequest$Builder;)V
++
+     invoke-virtual {p5}, Landroid/hardware/camera2/CaptureRequest$Builder;->build()Landroid/hardware/camera2/CaptureRequest;
+ 
+     move-result-object v4
+diff --git a/smali_classes5/Eh/b.smali b/smali_classes5/Eh/b.smali
+index 77321ad..44699bb 100644
+--- a/smali_classes5/Eh/b.smali
++++ b/smali_classes5/Eh/b.smali
+@@ -147,6 +147,42 @@
+     return-void
+ .end method
+ 
++.method public static final e(Landroid/hardware/camera2/CaptureRequest$Builder;)V
++    .registers 5
++
++    new-instance v0, Landroid/hardware/camera2/CaptureRequest$Key;
++
++    const-string v1, "com.xiaomi.sessionparams.MiStreamUsecase"
++
++    sget-object v2, Ljava/lang/Integer;->TYPE:Ljava/lang/Class;
++
++    invoke-direct {v0, v1, v2}, Landroid/hardware/camera2/CaptureRequest$Key;-><init>(Ljava/lang/String;Ljava/lang/Class;)V
++
++    :try_start_satpip
++    invoke-virtual {p0, v0}, Landroid/hardware/camera2/CaptureRequest$Builder;->get(Landroid/hardware/camera2/CaptureRequest$Key;)Ljava/lang/Object;
++
++    move-result-object v1
++
++    if-nez v1, :return_satpip
++
++    const/4 v1, 0x2
++
++    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
++
++    move-result-object v1
++
++    invoke-virtual {p0, v0, v1}, Landroid/hardware/camera2/CaptureRequest$Builder;->set(Landroid/hardware/camera2/CaptureRequest$Key;Ljava/lang/Object;)V
++
++    :try_end_satpip
++    .catch Ljava/lang/IllegalArgumentException; {:try_start_satpip .. :try_end_satpip} :catch_satpip
++
++    :return_satpip
++    return-void
++
++    :catch_satpip
++    return-void
++.end method
++
+ .method public final c()Ljava/lang/String;
+     .locals 1
+ 
