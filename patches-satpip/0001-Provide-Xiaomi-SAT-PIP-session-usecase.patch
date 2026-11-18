@@ -1,5 +1,4 @@
 diff --git a/smali_classes4/n9/B0.smali b/smali_classes4/n9/B0.smali
-index d173f92..dccd040 100644
 --- a/smali_classes4/n9/B0.smali
 +++ b/smali_classes4/n9/B0.smali
 @@ -13207,6 +13207,8 @@
@@ -38,8 +37,19 @@ index d173f92..dccd040 100644
      invoke-virtual {p5}, Landroid/hardware/camera2/CaptureRequest$Builder;->build()Landroid/hardware/camera2/CaptureRequest;
  
      move-result-object v4
+diff --git a/smali_classes4/pa/g0.smali b/smali_classes4/pa/g0.smali
+--- a/smali_classes4/pa/g0.smali
++++ b/smali_classes4/pa/g0.smali
+@@ -275,6 +275,8 @@
+     :try_start_0
+     iget-object v0, p0, Lpa/g0;->b:Landroid/hardware/camera2/CaptureRequest$Builder;
+ 
++    invoke-static {v0}, LEh/b;->e(Landroid/hardware/camera2/CaptureRequest$Builder;)V
++
+     invoke-virtual {v0}, Landroid/hardware/camera2/CaptureRequest$Builder;->build()Landroid/hardware/camera2/CaptureRequest;
+ 
+     move-result-object v0
 diff --git a/smali_classes5/Eh/b.smali b/smali_classes5/Eh/b.smali
-index 77321ad..44699bb 100644
 --- a/smali_classes5/Eh/b.smali
 +++ b/smali_classes5/Eh/b.smali
 @@ -147,6 +147,42 @@
