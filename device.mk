@@ -9,6 +9,9 @@ $(call inherit-product, vendor/xiaomi/songyuan-miuicamera/songyuan-miuicamera-ve
 
 # Camera
 $(call soong_config_set_bool,camera,override_format_from_reserved,true)
+# Keep the AOSP camera service ABI, but expose the Xiaomi client-name session tag
+# that the vendor camera HAL uses to classify the MIUI camera session.
+$(call soong_config_set,camera,package_name,com.xiaomi.sessionparams.clientName)
 
 # Hypsys_system
 PRODUCT_PACKAGES += \
