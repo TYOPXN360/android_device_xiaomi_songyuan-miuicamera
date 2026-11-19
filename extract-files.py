@@ -28,11 +28,11 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libgui_shim_miuicamera.so'),
     'system/lib64/libmicampostproc_client.so': blob_fixup()
         .remove_needed('libhidltransport.so'),
-    # patches-satpip/ contains only the songyuan OS4 SAT/PIP session bridge.
+    # patches-client-name/ fills only the Xiaomi app identity on session requests.
     # The historical patches-myron-reference/ directory targets an older APK
     # mapping and is kept for reference; it is intentionally not applied.
     'product/priv-app/MiuiCamera/MiuiCamera.apk': blob_fixup()
-        .apktool_patch('patches-satpip'),
+        .apktool_patch('patches-client-name'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(

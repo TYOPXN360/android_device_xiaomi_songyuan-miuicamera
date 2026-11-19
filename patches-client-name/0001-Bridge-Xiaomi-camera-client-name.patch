@@ -52,7 +52,7 @@ diff --git a/smali_classes4/pa/g0.smali b/smali_classes4/pa/g0.smali
 diff --git a/smali_classes5/Eh/b.smali b/smali_classes5/Eh/b.smali
 --- a/smali_classes5/Eh/b.smali
 +++ b/smali_classes5/Eh/b.smali
-@@ -147,6 +147,42 @@
+@@ -147,6 +147,38 @@
      return-void
  .end method
  
@@ -61,34 +61,30 @@ diff --git a/smali_classes5/Eh/b.smali b/smali_classes5/Eh/b.smali
 +
 +    new-instance v0, Landroid/hardware/camera2/CaptureRequest$Key;
 +
-+    const-string v1, "com.xiaomi.sessionparams.MiStreamUsecase"
++    const-string v1, "com.xiaomi.sessionparams.clientName"
 +
-+    sget-object v2, Ljava/lang/Integer;->TYPE:Ljava/lang/Class;
++    const-class v2, Ljava/lang/String;
 +
 +    invoke-direct {v0, v1, v2}, Landroid/hardware/camera2/CaptureRequest$Key;-><init>(Ljava/lang/String;Ljava/lang/Class;)V
 +
-+    :try_start_satpip
++    :try_start_client_name
 +    invoke-virtual {p0, v0}, Landroid/hardware/camera2/CaptureRequest$Builder;->get(Landroid/hardware/camera2/CaptureRequest$Key;)Ljava/lang/Object;
 +
 +    move-result-object v1
 +
-+    if-nez v1, :return_satpip
++    if-nez v1, :return_client_name
 +
-+    const/4 v1, 0x2
-+
-+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-+
-+    move-result-object v1
++    const-string v1, "com.android.camera"
 +
 +    invoke-virtual {p0, v0, v1}, Landroid/hardware/camera2/CaptureRequest$Builder;->set(Landroid/hardware/camera2/CaptureRequest$Key;Ljava/lang/Object;)V
 +
-+    :try_end_satpip
-+    .catch Ljava/lang/IllegalArgumentException; {:try_start_satpip .. :try_end_satpip} :catch_satpip
++    :try_end_client_name
++    .catch Ljava/lang/IllegalArgumentException; {:try_start_client_name .. :try_end_client_name} :catch_client_name
 +
-+    :return_satpip
++    :return_client_name
 +    return-void
 +
-+    :catch_satpip
++    :catch_client_name
 +    return-void
 +.end method
 +
