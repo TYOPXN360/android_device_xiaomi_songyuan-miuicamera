@@ -10,9 +10,10 @@ Inherited automatically by `lineage_songyuan.mk` once the blobs exist:
 
 ## APK patches
 
-`patches-client-name/` holds the patches applied to the current APK.
-`patches-myron-reference/` keeps myron's originals for reference. They do not
-apply as-is: songyuan's APK is a different build with a different R8 mapping.
+`patches-client-name/` holds the patch applied to the current APK.
+`patches-myron-reference/` keeps myron's originals for reference. The upstream
+`patches/` directory is retained for reference; its 0004 gallery patch targets a
+different R8 mapping and is not applied to this APK.
 
 | patch | myron path | songyuan | state |
 | :-- | :-- | :-- | :-- |
@@ -58,6 +59,6 @@ every shutter press.
 
 ## Current OS4 extraction path
 
-The extracted OS4 APK is installed from `product/priv-app/MiuiCamera/MiuiCamera.apk` and is currently a raw stock blob before fixups. `extract-files.py` applies `patches-client-name/`, which contains the Xiaomi client-name bridge and upstream's third-party gallery patch. The historical patches targeting an earlier R8 mapping (`Td/c`, `Se/a`, `Ki/f`) are preserved only under `patches-myron-reference/`.
+The extracted OS4 APK is installed from `product/priv-app/MiuiCamera/MiuiCamera.apk` and is currently a raw stock blob before fixups. `extract-files.py` applies only `patches-client-name/` (the Xiaomi client-name bridge). Upstream's `patches/0004-Support-third-party-galleries.patch` targets a different R8 mapping and is retained for reference but not applied to this OS4.0.7.0 APK. The historical patches targeting an earlier R8 mapping (`Td/c`, `Se/a`, `Ki/f`) are preserved under `patches-myron-reference/`.
 
 The old `0001` global-device workaround is intentionally not re-applied: `ro.product.mod_device=songyuan` plus `SecurityCenterStub` already covers that permission-flow behavior. The APK-only camera bridge is separate: it fills `com.xiaomi.sessionparams.clientName` with `com.android.camera` on the session-parameter builders used by `n9/B0` and `pa/g0`. It deliberately does not invent a `MiStreamUsecase` value; the stock HAL metadata defines value `2` only for `VID_HDR`, so existing app-provided usecase values are left untouched.

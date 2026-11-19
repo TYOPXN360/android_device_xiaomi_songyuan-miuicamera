@@ -28,8 +28,9 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libgui_shim_miuicamera.so'),
     'system/lib64/libmicampostproc_client.so': blob_fixup()
         .remove_needed('libhidltransport.so'),
-    # patches-client-name/ holds the Xiaomi client-name bridge and upstream's
-    # third-party gallery patch, re-derived for songyuan's R8 mapping.
+    # patches-client-name/ holds the Xiaomi client-name bridge. Upstream's
+    # third-party gallery patch under patches/ targets a different R8 mapping
+    # and is kept for reference, not applied to this APK.
     'product/priv-app/MiuiCamera/MiuiCamera.apk': blob_fixup()
         .apktool_patch('patches-client-name'),
 }  # fmt: skip
