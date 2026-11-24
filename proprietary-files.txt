@@ -1,10 +1,10 @@
-# Other unpinned blobs below are extracted from songyuan OS3.0.305.0.WGNEUXM.
+# All blobs below are extracted from songyuan OS4.0.8.0.XGNCNXM.
 
 # Keep MiuiCamera on /product: its privileged permission allowlist lives on the
 # same partition, and Android 17 resolves those allowlists per partition. An
 # app on /system with an allowlist on /product fails systemReady with
 # "Signature|privileged permissions not in privileged permission allowlist".
-# MiuiCamera uses the OS4.0.7.0 stock APK; extract-files.py applies patches-client-name/ before install.
+# MiuiCamera uses the OS4.0.8.0 stock APK; extract-files.py applies patches-client-name/ before install.
 product/priv-app/MiuiCamera/MiuiCamera.apk
 
 # Xiaomi Scanner is dropped: it is a MIUI framework app (miui.os.Build) and
